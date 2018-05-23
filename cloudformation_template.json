@@ -1,0 +1,54 @@
+{
+"AWSTemplateFormatVersion": "2010-09-09",
+    "Description": "My Cloudformation Template",
+    "Metadata": {
+
+    },
+    "Parameters": {
+    
+    },
+    "Mappings": {
+
+    },
+    "Conditions": {
+
+    },
+    "Resources": {
+        
+        "VPC": {
+          "Type": "AWS::EC2::VPC",
+          "Properties": {
+            "CidrBlock": "10.0.0.0/16",
+            "Tags": [{
+                "Type": "Name",
+                "Value": "MyCloudFormationVPC"
+            }]
+          }
+        },
+
+        
+        "PublicSubnet": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "us-west-1",
+            "VpcId": "VPC",
+            "CidrBlock": "10.0.1.0/24"            
+          }
+        },
+        
+        
+        "PrivateSubnet": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "us-west-2",
+            "VpcId": "VPC",
+            "CidrBlock": "10.0.2.0/24"
+          }
+        }
+        
+        
+    },
+    "Outputs": {
+
+    }
+}
