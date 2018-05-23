@@ -18,7 +18,7 @@ Resources:
     Properties:
       CidrBlock: 10.0.1.0/2
       AvailabilityZone: 'us-west-2a'
-      VpcId: Ref VPC
+      VpcId: !Ref VPC
       Tags:
         -
           Key: Name
@@ -29,9 +29,17 @@ Resources:
     Properties:
       CidrBlock: 10.0.2.0/24
       AvailabilityZone: 'us-west-2b'
-      VpcId: VPC
+      VpcId: !Ref VPC
       Tags:
         -
           Key: Name
           Value: MyCFPrivateVPC
-        
+
+  InternetGateway:
+      Type: AWS::EC2::InternetGateway
+      Properties:
+        Tags:
+          -
+            Key: Name
+            Value: MyCFInternetGateway
+
