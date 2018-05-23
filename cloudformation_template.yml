@@ -16,7 +16,7 @@ Resources:
   PublicSubnet:
     Type: AWS::EC2::Subnet
     Properties:
-      CidrBlock: 10.0.1.0/2
+      CidrBlock: 10.0.1.0/24
       AvailabilityZone: 'us-west-2a'
       VpcId: !Ref VPC
       Tags:
@@ -36,10 +36,26 @@ Resources:
           Value: MyCFPrivateVPC
 
   InternetGateway:
-      Type: AWS::EC2::InternetGateway
-      Properties:
-        Tags:
-          -
-            Key: Name
-            Value: MyCFInternetGateway
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        -
+          Key: Name
+          Value: MyCFInternetGateway
 
+  PublicRouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref VPC
+      Tags:
+        -
+          Key: Name
+          Value: MyCFPublicRouteTable
+  
+  PublicRoute:
+    Type: AWS::EC2::Route
+    DependsOn: InternetGateway
+    Properties:
+      RouteTableId: !Ref PublicRouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GateWayId: !Ref InternetGateway
