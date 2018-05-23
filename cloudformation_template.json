@@ -40,6 +40,15 @@
             "VpcId": "VPC",
             "CidrBlock": "10.0.2.0/24"
           }
+        },
+        
+        "2ndPrivateSubnet": {
+          "Type": "AWS::EC2::Subnet",
+          "Properties": {
+            "AvailabilityZone": "us-west-3",
+            "VpcId": "VPC",
+            "CidrBlock": "10.0.3.0/24"
+          }
         }
         
         
