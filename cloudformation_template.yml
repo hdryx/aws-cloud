@@ -47,7 +47,7 @@ Resources:
           Value: MyCFInternetGateway
 
   AttachGateway:
-    Type: AWS::EC2::VPCGatewayAttachement
+    Type: AWS::EC2::VPCGatewayAttachment
     DependsOn:
       - VPC
       - InternetGateway
