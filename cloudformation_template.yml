@@ -13,6 +13,24 @@ Resources:
           Key: Name
           Value: MyCFVPC
   
+  InternetGateway:
+    Type: AWS::EC2::InternetGateway
+    DependsOn: VPC
+    Properties:
+      Tags:
+        -
+          Key: Name
+          Value: MyCFInternetGateway
+
+  AttachGateway:
+    Type: AWS::EC2::VPCGatewayAttachment
+    DependsOn:
+      - VPC
+      - InternetGateway
+    Properties:
+      VpcId: !Ref VPC
+      InternetGatewayId: !Ref InternetGateway
+
   PublicSubnet:
     Type: AWS::EC2::Subnet
     DependsOn: VPC
@@ -36,24 +54,6 @@ Resources:
         -
           Key: Name
           Value: MyCFPrivateVPC
-
-  InternetGateway:
-    Type: AWS::EC2::InternetGateway
-    DependsOn: VPC
-    Properties:
-      Tags:
-        -
-          Key: Name
-          Value: MyCFInternetGateway
-
-  AttachGateway:
-    Type: AWS::EC2::VPCGatewayAttachment
-    DependsOn:
-      - VPC
-      - InternetGateway
-    Properties:
-      VpcId: !Ref VPC
-      InternetGatewayId: !Ref InternetGateway
       
   PublicRouteTable:
     Type: AWS::EC2::RouteTable
