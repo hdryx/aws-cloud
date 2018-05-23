@@ -1,0 +1,27 @@
+AWSTemplateFormatVersion: "2010-09-09"
+Description: "My CloudFormation Training template"
+
+Resources:
+  VPC:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: 'true'
+      EnableDnsHostnames: 'true'
+      Tags:
+        -
+          Key: Name
+          Value: MyCFVPC
+  
+  PublicSubnet:
+    Type: AWS:EC2:Subnet
+      Properties:
+        CidrBlock: 10.0.1.0/2
+        AvailabilityZone: 'us-west-1'
+        VpcId: Ref VPC
+        Tags:
+          -
+            Key: Name
+            Value: MyCFPublicSubnet
+
+        
