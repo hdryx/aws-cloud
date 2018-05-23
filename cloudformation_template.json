@@ -18,7 +18,12 @@
         "VPC": {
           "Type": "AWS::EC2::VPC",
           "Properties": {
-            "CidrBlock": "10.0.0.0/16"
+            "CidrBlock": "10.0.0.0/16",
+            "tags":[
+              
+              { "Key": "Name", "Value":  "MyVPC" }
+              
+            ]
           }
         },
 
@@ -40,46 +45,8 @@
             "VpcId": "VPC",
             "CidrBlock": "10.0.2.0/24"
           }
-        },
-        
-        "2ndPrivateSubnet": {
-          "Type": "AWS::EC2::Subnet",
-          "Properties": {
-            "AvailabilityZone": "us-west-3",
-            "VpcId": "VPC",
-            "CidrBlock": "10.0.3.0/24"
-          },
-
-        
-        "MyEC2Instance": {
-            "Type": "AWS::EC2::Instance",
-            "Properties": {
-                "DisableApiTermination": "-",
-                "ImageId":  "ami-37938b57",
-                "InstanceType": "-",
-                "Monitoring": "true|false",
-                "SecurityGroupIds" : [-],
-                "Tags": [
-                    {
-                        "Key": "-",
-                        "Value": "-"
-                    }
-                ],
-                "UserData": {
-                    "Fn::Base64": {
-                        "Fn::Join": [
-                            "",
-                            [
-                                "#!/bin/bash -ex",
-                                "-"
-                            ]
-                        ]
-                    }
-                }
         }
-                }
-        
-        
+     
     },
     "Outputs": {
 
