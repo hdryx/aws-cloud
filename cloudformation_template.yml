@@ -14,14 +14,24 @@ Resources:
           Value: MyCFVPC
   
   PublicSubnet:
-    Type: AWS:EC2:Subnet
-      Properties:
-        CidrBlock: 10.0.1.0/2
-        AvailabilityZone: 'us-west-1'
-        VpcId: Ref VPC
-        Tags:
-          -
-            Key: Name
-            Value: MyCFPublicSubnet
-
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.1.0/2
+      AvailabilityZone: 'us-west-1'
+      VpcId: Ref VPC
+      Tags:
+        -
+          Key: Name
+          Value: MyCFPublicSubnet
+  
+  PrivateSubnet:
+    Type: AWS::EC2::Subnet
+    Properties:
+      CidrBlock: 10.0.2.0/24
+      AvailabilityZone: 'us-west-2'
+      VpcId: VPC
+      Tags:
+        -
+          Key: Name
+          Value: MyCFPrivateVPC
         
