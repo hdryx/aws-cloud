@@ -96,7 +96,7 @@ Resources:
     DependsOn: VPC
     Properties:
       VpcId: !Ref VPC
-      Description: Open DB port
+      GroupDescription: Open DB port
       SecurityGroupIngress:
         - IpProtocol: tcp
           FromPort: 3306
