@@ -109,7 +109,7 @@ Resources:
       - VPC
       - WebSecurityGroup
     Properties:
-      AvailabilityZone: 'us-west-2b'
+      AvailabilityZone: 'us-west-2a'
       InstanceType: 't2.micro'
       ImageId: 'ami-e251209a'
       SecurityGroupIds:
